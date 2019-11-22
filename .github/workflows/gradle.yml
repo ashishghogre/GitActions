@@ -8,5 +8,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - uses: MrRamych/gradle-actions/openjdk-8@3.1
+    - uses: eskatos/gradle-command-action@v1
       with:
-        args: test
+        wrapper-directory: ./gradlew
+        args: jib --image=aashishghogre/git-actions
