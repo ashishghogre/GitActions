@@ -13,7 +13,8 @@ jobs:
     - uses: actions/setup-java@v1
       with:
         java-version: 8
-    - uses: eskatos/gradle-command-action@v1
-      with:
-        wrapper-directory: .
-        arguments: jib --image=aashishghogre/git-actions
+    - name: Build Docker image with gradle
+      env:
+         dockerUser: ${{ secrets.DOCKER_HUB_USERNAME}}
+         dockerPassword: ${{ secrets.DOCKER_HUB_PASSWORD}}
+      run: ./gradlew jib

@@ -40,3 +40,12 @@ dependencies {
     testCompile("org.springframework.boot:spring-boot-starter-test")
 }
 
+jib	{
+	to {
+		image = 'aashishghogre/gitactions'
+		auth {
+			username = System.getenv('dockerUser')
+			password = System.getenv('dockerPassword')
+		}
+	}
+}
